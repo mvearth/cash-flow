@@ -1,0 +1,15 @@
+using Terra.CashFlow.Core.Domain.Interfaces;
+
+namespace Terra.CashFlow.Core.Domain;
+
+public class Customer : IEntity
+{
+    public Guid Id { get; private set; }
+
+    public string Name { get; private set; }
+
+    public Customer(string name)
+    {
+        Name = name;
+    }
+}
