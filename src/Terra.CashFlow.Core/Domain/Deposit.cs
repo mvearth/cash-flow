@@ -12,7 +12,7 @@ public class Deposit : IEntity
 
     public DepositStatus Status { get; private set; }
 
-    public Deposit(Guid accountId, decimal amount)
+    internal Deposit(Guid accountId, decimal amount)
     {
         AccountId = accountId;
         Amount = amount;
@@ -22,13 +22,13 @@ public class Deposit : IEntity
     public void Finish() =>
         Status = DepositStatus.Done;
 
-    public bool IsReadyToCash(Guid accountId) =>
-        AccountId == accountId && Status == DepositStatus.Requested;
+    public bool IsReadyToCash() =>
+        Status == DepositStatus.Requested;
 }
 
 public enum DepositStatus 
 {
     Requested,
-    Done
+    Done,
 }
 
